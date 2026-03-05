@@ -15,41 +15,47 @@
     text-align: center;
   }
 
-  .hero {
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-  .hero img {
-    width: 100%;
-    border-radius: 12px;
-    margin-top: 20px;
-  }
-
   h1 {
     margin-top: 20px;
     font-size: 2.2rem;
     letter-spacing: 1px;
   }
 
-  .address {
-    margin-top: 10px;
+  .label {
+    margin-top: 15px;
+    font-size: 1.1rem;
+    color: #bbb;
+  }
+
+  .copy-box {
+    margin-top: 5px;
     font-size: 1rem;
     color: #ccc;
     word-break: break-all;
+    cursor: pointer;
+    padding: 8px 12px;
+    border: 1px solid #444;
+    border-radius: 6px;
+    display: inline-block;
+  }
+
+  .copy-box:active {
+    background: #222;
   }
 
   .player-container {
-    margin-top: 25px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+    margin-top: 20px;
   }
 
-  .fallback {
-    margin-top: 20px;
+  .hero {
+    width: 100%;
+    max-width: 900px;
+    margin: 20px auto 0 auto;
+  }
+
+  .hero img {
+    width: 100%;
+    border-radius: 12px;
   }
 </style>
 </head>
@@ -58,35 +64,52 @@
 
 <h1>Kori The Pom Radio</h1>
 
-<div class="address">
-  CA HtTYHz1Kf3rrQo6AqDLmss7gq5WrkWAaXn3tupUZbonk
+<!-- Contract Address Label -->
+<div class="label">Contract Address</div>
+
+<!-- Tap-to-copy address -->
+<div class="copy-box" id="copyAddress">
+  HtTYHz1Kf3rrQo6AqDLmss7gq5WrkWAaXn3tupUZbonk
 </div>
 
-<div class="hero">
-  <img src="https://i.ibb.co/0jr799Zx/Screenshot-20260303-092358-Gallery.jpg" alt="Kori Studio">
-</div>
-
+<!-- Play button directly underneath -->
 <div class="player-container">
   <div id="player"></div>
 
   <!-- Fallback HTML5 audio player -->
-  <div class="fallback">
-    <audio controls>
-      <source src="https://stream1.funky.sx:8433/kori" type="audio/mpeg">
-      Your browser does not support the audio element.
-    </audio>
-  </div>
+  <audio id="fallbackAudio" controls autoplay style="margin-top: 10px;">
+    <source src="https://stream1.funky.sx:8433/kori" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+</div>
+
+<!-- Image below everything -->
+<div class="hero">
+  <img src="https://i.ibb.co/0jr799Zx/Screenshot-20260303-092358-Gallery.jpg" alt="Kori Studio">
 </div>
 
 <script>
+// Muses player
 MRP.insert({
   url: "https://stream1.funky.sx:8433/kori",
   codec: "mp3",
-  autoplay: false,
+  autoplay: true,
   width: 300,
   height: 60,
   skin: "mcclean",
   title: "Kori The Pom Radio"
+});
+
+// Tap-to-copy
+document.getElementById("copyAddress").addEventListener("click", () => {
+  navigator.clipboard.writeText("HtTYHz1Kf3rrQo6AqDLmss7gq5WrkWAaXn3tupUZbonk");
+  alert("Contract Address copied");
+});
+
+// Autoplay fallback
+document.addEventListener("click", () => {
+  const audio = document.getElementById("fallbackAudio");
+  if (audio.paused) audio.play();
 });
 </script>
 
