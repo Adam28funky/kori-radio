@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -44,6 +44,12 @@
     margin-top: 25px;
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .fallback {
+    margin-top: 20px;
   }
 </style>
 </head>
@@ -62,11 +68,19 @@
 
 <div class="player-container">
   <div id="player"></div>
+
+  <!-- Fallback HTML5 audio player -->
+  <div class="fallback">
+    <audio controls>
+      <source src="https://stream1.funky.sx:8433/kori" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
 </div>
 
 <script>
 MRP.insert({
-  url: "http://stream1.funky.sx:8000/kori",
+  url: "https://stream1.funky.sx:8433/kori",
   codec: "mp3",
   autoplay: false,
   width: 300,
@@ -78,4 +92,3 @@ MRP.insert({
 
 </body>
 </html>
-
