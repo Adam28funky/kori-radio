@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kori The Pom Radio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://hosted.muses.org/mrp.js"></script>
+
+<style>
+  body {
+    margin: 0;
+    background: #111;
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+  }
+
+  .hero {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .hero img {
+    width: 100%;
+    border-radius: 12px;
+    margin-top: 20px;
+  }
+
+  h1 {
+    margin-top: 20px;
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+  }
+
+  .address {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #ccc;
+    word-break: break-all;
+  }
+
+  .player-container {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+  }
+</style>
+</head>
+
+<body>
+
+<h1>Kori The Pom Radio</h1>
+
+<div class="address">
+  CA HtTYHz1Kf3rrQo6AqDLmss7gq5WrkWAaXn3tupUZbonk
+</div>
+
+<div class="hero">
+  <img src="https://i.ibb.co/0jr799Zx/Screenshot-20260303-092358-Gallery.jpg" alt="Kori Studio">
+</div>
+
+<div class="player-container">
+  <div id="player"></div>
+</div>
+
+<script>
+MRP.insert({
+  url: "http://stream1.funky.sx:8000/kori",
+  codec: "mp3",
+  autoplay: false,
+  width: 300,
+  height: 60,
+  skin: "mcclean",
+  title: "Kori The Pom Radio"
+});
+</script>
+
+</body>
+</html>
